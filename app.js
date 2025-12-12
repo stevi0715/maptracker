@@ -21,10 +21,11 @@ function showAlert(message) {
 
 // Load cameras from JSON
 let cameras = [];
-fetch('south-yorkshire-cameras.json')
+fetch('barnsley-cameras.json') // 👈 make sure this matches your actual file name
   .then(res => res.json())
   .then(data => {
     cameras = data;
+    console.log("Loaded cameras:", cameras); // debug check
     cameras.forEach(cam => {
       L.marker([cam.lat, cam.lng])
         .addTo(map)
@@ -34,9 +35,8 @@ fetch('south-yorkshire-cameras.json')
   .catch(err => console.error("Error loading cameras:", err));
 
 // Track user location continuously
-map.locate({ watch: true, setView: true, maxZoom: 16 });
-
 let carMarker;
+map.locate({ watch: true, setView: true, maxZoom: 16 });
 
 map.on('locationfound', e => {
   // Update or create car marker
@@ -45,15 +45,21 @@ map.on('locationfound', e => {
   } else {
     carMarker = L.marker(e.latlng, {
       icon: L.icon({
-        iconUrl: 'https://cdn-icons-png.flaticon.com/512/61/61113.png', // car icon
+        iconUrl: 'https://cdn-icons-png.flaticon.com/512/61/61113.png',
         iconSize: [32, 32]
       })
     }).addTo(map).bindPopup("You are here");
   }
 
-  // Speed display in MPH
+  // ✅ Speed display in MPH (with fallback)
+  let speedMph;
   if (e.speed) {
-    const speedMph = (e.speed * 2.23694).toFixed(0);
+    speedMph = (e.speed * 2.23694).toFixed(0);
+  } else if (e.coords && e.coords.speed) {
+    speedMph = (e.coords.speed * 2.23694).toFixed(0);
+  }
+
+  if (speedMph) {
     speedDisplay.innerText = `Speed: ${speedMph} mph`;
 
     const limitText = limitDisplay.innerText.replace(/[^0-9]/g, '');
@@ -69,7 +75,7 @@ map.on('locationfound', e => {
     speedDisplay.classList.remove('over-limit');
   }
 
-  // Check proximity to cameras
+  // Proximity check for cameras
   cameras.forEach(cam => {
     const distance = map.distance(e.latlng, L.latLng(cam.lat, cam.lng));
     if (distance < 500) {
@@ -77,15 +83,3 @@ map.on('locationfound', e => {
     }
   });
 });
-fetch('barnsley-cameras.json')
-  .then(res => res.json())
-  .then(data => {
-    cameras = data;
-    console.log("Loaded cameras:", cameras); // check console
-    cameras.forEach(cam => {
-      L.marker([cam.lat, cam.lng])
-        .addTo(map)
-        .bindPopup(`Camera: ${cam.type} | Road: ${cam.road} | Limit: ${cam.limit} mph`);
-    });
-  })
-  .catch(err => console.error("Error loading cameras:", err));
