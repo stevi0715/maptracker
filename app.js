@@ -35,7 +35,7 @@ fetch('barnsley-cameras.json') // 👈 make sure this matches your actual file n
 
 // Track user location continuously
 let carMarker;
-let followMe = true; // 👈 default: map follows your icon
+let followMe = true; // default: map follows your icon
 
 // Add a toggle button
 const followBtn = document.createElement('button');
@@ -74,12 +74,12 @@ map.on('locationfound', e => {
     }).addTo(map).bindPopup("You are here");
   }
 
-  // 👇 Keep map centered if follow mode is ON
+  // Keep map centered if follow mode is ON
   if (followMe) {
     map.setView(e.latlng, 16);
   }
 
-  // ✅ Speed display in MPH (with fallback)
+  // Speed display in MPH (with fallback)
   let speedMph;
   if (e.speed) {
     speedMph = (e.speed * 2.23694).toFixed(0);
