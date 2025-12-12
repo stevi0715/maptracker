@@ -10,33 +10,26 @@ h1 {
 }
 
 #map {
-  height: 60vh; /* responsive height */
+  height: 500px; /* fixed height */
   width: 100%;
   border: 2px solid #333;
 }
 
-/* Sticky dashboard bar */
 #dashboard {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background: #111;
+  margin: 20px auto;
   display: flex;
-  justify-content: space-around;
-  padding: 10px;
-  z-index: 1000;
+  justify-content: center;
+  gap: 20px;
 }
 
 #speed, #limit {
   background: #000;
   color: #0f0;
-  font-size: 1.5em;
-  padding: 10px 15px;
+  font-size: 2em;
+  padding: 15px 20px;
   border-radius: 8px;
   border: 2px solid #0f0;
-  transition: all 0.3s ease;
-  min-width: 120px;
+  min-width: 150px;
   text-align: center;
 }
 
@@ -55,18 +48,4 @@ h1 {
   font-size: 1.2em;
   padding: 10px;
   z-index: 2000;
-}
-
-/* Mobile tweaks */
-@media (max-width: 600px) {
-  #map {
-    height: 50vh;
-  }
-  #speed, #limit {
-    font-size: 1.2em;
-    padding: 8px 12px;
-  }
-  h1 {
-    font-size: 1.4em;
-  }
 }
