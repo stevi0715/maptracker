@@ -25,7 +25,6 @@ fetch('barnsley-cameras.json') // 👈 make sure this matches your actual file n
   .then(res => res.json())
   .then(data => {
     cameras = data;
-    console.log("Loaded cameras:", cameras); // debug check
     cameras.forEach(cam => {
       L.marker([cam.lat, cam.lng])
         .addTo(map)
@@ -36,6 +35,30 @@ fetch('barnsley-cameras.json') // 👈 make sure this matches your actual file n
 
 // Track user location continuously
 let carMarker;
+let followMe = true; // 👈 default: map follows your icon
+
+// Add a toggle button
+const followBtn = document.createElement('button');
+followBtn.innerText = "Follow Me: ON";
+followBtn.style.position = "absolute";
+followBtn.style.top = "10px";
+followBtn.style.right = "10px";
+followBtn.style.zIndex = "1000";
+followBtn.style.padding = "10px";
+followBtn.style.background = "#000";
+followBtn.style.color = "#0f0";
+followBtn.style.border = "2px solid #0f0";
+followBtn.style.borderRadius = "8px";
+followBtn.style.cursor = "pointer";
+document.body.appendChild(followBtn);
+
+followBtn.addEventListener('click', () => {
+  followMe = !followMe;
+  followBtn.innerText = followMe ? "Follow Me: ON" : "Follow Me: OFF";
+  followBtn.style.color = followMe ? "#0f0" : "#f00";
+  followBtn.style.border = followMe ? "2px solid #0f0" : "2px solid #f00";
+});
+
 map.locate({ watch: true, setView: true, maxZoom: 16 });
 
 map.on('locationfound', e => {
@@ -49,6 +72,11 @@ map.on('locationfound', e => {
         iconSize: [32, 32]
       })
     }).addTo(map).bindPopup("You are here");
+  }
+
+  // 👇 Keep map centered if follow mode is ON
+  if (followMe) {
+    map.setView(e.latlng, 16);
   }
 
   // ✅ Speed display in MPH (with fallback)
