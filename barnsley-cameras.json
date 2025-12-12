@@ -1,0 +1,26 @@
+[
+  { "lat": 53.553, "lng": -1.482, "type": "fixed", "road": "Park Road (A61), Barnsley", "limit": 30 },
+  { "lat": 53.560, "lng": -1.490, "type": "mobile", "road": "Dodworth Road (A628), Barnsley", "limit": 40 },
+  { "lat": 53.557, "lng": -1.467, "type": "fixed", "road": "Wakefield Road (A61), Barnsley", "limit": 30 },
+  { "lat": 53.551, "lng": -1.487, "type": "fixed", "road": "Pontefract Road (A628), Barnsley", "limit": 30 },
+  { "lat": 53.383, "lng": -1.465, "type": "fixed", "road": "Ecclesall Road (A625), Sheffield", "limit": 30 },
+  { "lat": 53.392, "lng": -1.454, "type": "fixed", "road": "Penistone Road (A61), Sheffield", "limit": 40 },
+  { "lat": 53.414, "lng": -1.412, "type": "mobile", "road": "Barnsley Road (A6135), Sheffield", "limit": 30 },
+  { "lat": 53.430, "lng": -1.356, "type": "fixed", "road": "Doncaster Road (A630), Rotherham", "limit": 30 },
+  { "lat": 53.440, "lng": -1.370, "type": "mobile", "road": "Bawtry Road (A631), Rotherham", "limit": 40 },
+  { "lat": 53.522, "lng": -1.133, "type": "fixed", "road": "Wheatley Hall Road (A630), Doncaster", "limit": 30 },
+  { "lat": 53.520, "lng": -1.145, "type": "mobile", "road": "Balby Road (A630), Doncaster", "limit": 30 },
+  { "lat": 53.493, "lng": -1.138, "type": "fixed", "road": "York Road (A19), Doncaster", "limit": 30 },
+  { "lat": 53.470, "lng": -1.325, "type": "fixed", "road": "Sheffield Road (A57), Rotherham", "limit": 40 },
+  { "lat": 53.365, "lng": -1.500, "type": "mobile", "road": "Abbeydale Road (A621), Sheffield", "limit": 30 },
+  { "lat": 53.370, "lng": -1.470, "type": "fixed", "road": "London Road (A61), Sheffield", "limit": 30 },
+  { "lat": 53.375, "lng": -1.460, "type": "fixed", "road": "Queens Road (A61), Sheffield", "limit": 30 },
+  { "lat": 53.410, "lng": -1.450, "type": "mobile", "road": "Herries Road, Sheffield", "limit": 30 },
+  { "lat": 53.420, "lng": -1.380, "type": "fixed", "road": "Moorgate Road, Rotherham", "limit": 30 },
+  { "lat": 53.530, "lng": -1.120, "type": "fixed", "road": "Thorne Road (A18), Doncaster", "limit": 30 },
+  { "lat": 53.540, "lng": -1.100, "type": "mobile", "road": "Leger Way (A18), Doncaster", "limit": 40 }
+]
+
+
+
+
