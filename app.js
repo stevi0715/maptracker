@@ -34,18 +34,21 @@ fetch('south-yorkshire-cameras.json')
   .catch(err => console.error("Error loading cameras:", err));
 
 // Track user location continuously
-let carMarker;
 map.locate({ watch: true, setView: true, maxZoom: 16 });
+
+let carMarker;
 
 map.on('locationfound', e => {
   // Update or create car marker
   if (carMarker) {
     carMarker.setLatLng(e.latlng);
   } else {
-    carMarker = L.marker(e.latlng, { icon: L.icon({
-      iconUrl: 'https://cdn-icons-png.flaticon.com/512/61/61113.png',
-      iconSize: [32, 32]
-    })}).addTo(map).bindPopup("You are here");
+    carMarker = L.marker(e.latlng, {
+      icon: L.icon({
+        iconUrl: 'https://cdn-icons-png.flaticon.com/512/61/61113.png', // car icon
+        iconSize: [32, 32]
+      })
+    }).addTo(map).bindPopup("You are here");
   }
 
   // Speed display in MPH
