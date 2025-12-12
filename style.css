@@ -1,32 +1,43 @@
 body {
   font-family: Arial, sans-serif;
-  text-align: center;
   margin: 0;
   padding: 0;
 }
 
+h1 {
+  text-align: center;
+  margin: 10px 0;
+}
+
 #map {
-  height: 500px;
+  height: 60vh; /* responsive height */
   width: 100%;
-  margin: 0 auto;
   border: 2px solid #333;
 }
 
+/* Sticky dashboard bar */
 #dashboard {
-  margin: 20px auto;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #111;
   display: flex;
-  justify-content: center;
-  gap: 20px;
+  justify-content: space-around;
+  padding: 10px;
+  z-index: 1000;
 }
 
 #speed, #limit {
   background: #000;
-  color: #0f0; /* default green */
-  font-size: 2em;
-  padding: 10px 20px;
+  color: #0f0;
+  font-size: 1.5em;
+  padding: 10px 15px;
   border-radius: 8px;
   border: 2px solid #0f0;
   transition: all 0.3s ease;
+  min-width: 120px;
+  text-align: center;
 }
 
 #speed.over-limit {
@@ -41,7 +52,21 @@ body {
   width: 100%;
   background: red;
   color: white;
-  font-size: 1.5em;
+  font-size: 1.2em;
   padding: 10px;
-  z-index: 1000;
+  z-index: 2000;
+}
+
+/* Mobile tweaks */
+@media (max-width: 600px) {
+  #map {
+    height: 50vh;
+  }
+  #speed, #limit {
+    font-size: 1.2em;
+    padding: 8px 12px;
+  }
+  h1 {
+    font-size: 1.4em;
+  }
 }
